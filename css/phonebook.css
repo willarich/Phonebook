@@ -1,0 +1,61 @@
+
+ html{ font-family:sans-serif; }
+
+body { padding: 20px; }
+
+#phonebook {
+	font-size: 16px; font-weight: 400;
+	width: 650px; 
+	position: relative;
+}
+
+
+#phonebook .form-group { padding: 0px 0px 20px 10px; }
+#phonebook .form-group input { position: absolute; width: 200px; left: 170px; }
+
+/*	Single Contact View	*/
+#phonebook .singleContact.active { position: absolute; top: 120px; left: 20px; width: 350px; 
+	word-wrap: break-word; padding: 10px 10px 80px 220px; visibility: visible;}
+#phonebook .singleContact.active img { position: absolute; top: 10px; left: 0px; visibility: visible; }
+
+#phonebook .singleContact.inactive { position: absolute; visibility: hidden; }
+#phonebook .singleContact.inactive img { position: absolute; visibility: hidden; }
+
+#phonebook .returnBtn { position: absolute; top: 300px; left: 250px; width: 100px; 
+	word-wrap: break-word; }
+#phonebook .returnBtn.active { visibility: visible; }
+#phonebook .returnBtn.inactive { visibility: hidden; }
+
+
+/*	Edit Contact View	*/
+#phonebook .editContact.active { position: absolute; padding: 10px 10px 40px 20px; width: 450px; visibility: visible; }
+#phonebook .editContact.inactive { position: absolute; padding: 10px 10px 40px 20px; width: 450px; visibility: hidden; }
+
+#phonebook .saveBtn { position: absolute; top: 260px; left: 30px; width: 130px; 
+	word-wrap: break-word; }
+#phonebook .saveBtn.active { visibility: visible; }
+#phonebook .saveBtn.inactive { visibility: hidden; }
+
+#phonebook .cancelBtn { position: absolute; top: 260px; left: 250px; width: 130px; 
+	word-wrap: break-word; }
+#phonebook .cancelBtn.active { visibility: visible; }
+#phonebook .cancelBtn.inactive { visibility: hidden; }
+
+
+/*	Contact List View	*/
+#phonebook .contacts.active { position: relative; top: 25px; left: 20px; width: 350px; 
+	word-wrap: break-word; padding: 10px 10px 80px 220px; visibility: visible;}
+#phonebook .contacts .image { position: absolute; top: 10px; left: 0px; visibility: visible; }
+#phonebook .contacts.inactive { position: absolute; top: 0px; left: 20px; width: 350px; 
+	word-wrap: break-word; padding: 0px 0px 0px 0px; visibility: hidden;}
+#phonebook .contacts.active .image { position: absolute; top: 10px; left: 0px; visibility: visible; height: 200px; width: 200px;}
+#phonebook .contacts.inactive .image { position: relative; top: 0px; left: 0px; visibility: hidden; height: 0px; width: 0px;}
+
+
+/*	New Contact View	*/
+#phonebook .newContact.active { position: relative; padding: 10px 10px 40px 20px; width: 450px; visibility: visible; }
+#phonebook .newContact.inactive { position: relative; padding: 10px 10px 40px 20px; width: 450px; visibility: hidden; }
+
+
+
+

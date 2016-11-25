@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html ng-app="phonebook">
+	<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phonebook Application</title>        
+		<link rel="stylesheet" type ="text/css" href="./css/phonebook.css" />
+  </head>
+  <body>
+    <div id="phonebook" ng-controller="PhonebookCtrl">
+
+      <h1>William's Phonebook</h1>
+
+      <!-- Nav buttons for debugging -->
+      <!--
+      <button class="btn" ng-click="editContactViewId = -1; singleContactViewId = -1; listContacts = true">Test List Contacts</button>
+      <button class="btn" ng-click="singleContactViewId = 0; editContactViewId = -1; listContacts = false">Test Single View</button>
+      <button class="btn" ng-click="editContactViewId = 0; singleContactViewId = -1; listContacts = false">Test Edit Contact</button>
+      <button class="btn" ng-click="editContactViewId = -1; singleContactViewId = -1; listContacts = false;">Blank</button>
+      -->
+      
+      <!-- View a single contact -->
+      <div class="singleContact {{ (singleContactViewId === -1) ? 'inactive' : 'active'}}" ng-bind-html="getSingleContactViewHtml(singleContactViewId)">
+      </div>
+      <button class="returnBtn {{ (singleContactViewId === -1) ? 'inactive' : 'active'}}" ng-click="showListContacts()">Return</button>
+
+
+      <!-- Edit a contact view -->
+      <div class="editContact {{ (editContactViewId === -1) ? 'inactive' : 'active'}}">
+        <h3>Edit Contact:</h3>
+        <form  name ="phonebookform" ng-submit= "editContact(editContactViewId)">
+          <div class="form-group">Name: 
+            <input type="text" ng-model="name" name = "editName" placeholder="Johnny Appleseed"/>
+          </div>
+          <div class="form-group">Phone Number:  
+            <input type="text" ng-model="phone" name  ="editPhone" placeholder="(123) 456-7890"/>
+          </div>
+          <div class="form-group">Email: 
+            <input type="email" ng-model="email" name = "editEmail" placeholder="sameone@example.com"/>
+          </div>
+          <div class="form-group">Birthday: 
+            <input type="text" ng-model="birthday" name  ="editBirthday" placeholder="01/01/2000" value="' + currentBirthday + '"/>
+          </div>
+          <div class="form-group">Image URL: 
+            <input type="text" ng-model="avatar" name = "editAvatar" placeholder="http://picture.com/you.jpg" value="' + currentAvatar + '"/>
+          </div>
+          <button class="saveBtn {{ (editContactViewId === -1) ? 'inactive' : 'active'}}" ng-click="editContact(editContactViewId)" >Save Changes</button>
+          <button class="cancelBtn {{ (editContactViewId === -1) ? 'inactive' : 'active'}}" ng-click="showListContacts()">Cancel</button>
+        </form>
+      </div>
+
+      <!-- List of all contacts -->
+      <div class="contacts {{ (listContacts === false) ? 'inactive' : 'active'}}" ng-repeat="contact in contacts">
+          
+          <p>Name: <strong>{{contact.name}}</strong></p>
+          <p>Phone Number: <strong>{{contact.phone}}</strong></p>
+          <p>Email: <strong>{{contact.email}}</strong></p>
+          <p>Birthday: <strong>{{contact.birthday}}</strong></p>
+          <div class="image"><img src="{{contact.avatar}}" alt="{{contact.name}}'s avatar" style="width:200px;height:200px;"></div>
+          <button class="btn" ng-click="showEditContact($index)">Edit</button>
+          <button class="btn" ng-click="showSingleContact($index)">View</button>
+        
+      </div>
+
+
+      <!-- New contact elements -->
+      <div class="newContact {{ (listContacts === false) ? 'inactive' : 'active'}}">
+        <h3>Create New Contact:</h3>
+        <form  name ="phonebookform" ng-submit= "addContact()" controller="validateCtrl" novalidate>
+          <div class="form-group">Name: 
+            <input type="text" ng-model="name" name = "name" placeholder="Johnny Appleseed"/>
+          </div> 
+
+          <div class="form-group">Phone Number:
+            <input type="text" ng-model="phone" name  ="phone" placeholder="(123) 456-7890"/> 
+          </div>
+
+          <div class="form-group">Email:
+            <input type="email" ng-model="email" name = "email" placeholder="sameone@example.com"/>
+          </div>
+
+          <div class="form-group">Birthday:
+            <input type="text" ng-model="birthday" name  ="birthday" placeholder="01/01/2000"/>
+          </div>
+
+          <div class="form-group">Image URL:
+            <input type="text" ng-model="avatar" name = "avatar" placeholder="http://picture.com/you.jpg"/>
+          </div>
+            
+        </form>
+        <p></p>
+        <button class="btn" ng-click="addContact(contact.id)" >Add Contact</button>
+      </div>
+
+    </div>
+
+    <!-- Links to Java Script -->
+    <script type="text/javascript" src="./js/angular.min.js"></script>
+    <script type="text/javascript" src="./js/Contacts.js"></script>
+
+  </body>
+      
+</html>
